@@ -4,7 +4,8 @@ import com.example.Shopping.dto.ProductDto;
 import com.example.Shopping.exceptions.ProductNotFoundException;
 import com.example.Shopping.model.Category;
 import com.example.Shopping.model.Product;
-import com.example.Shopping.repository.CategoryReopsitory;
+
+import com.example.Shopping.repository.CategoryRepository;
 import com.example.Shopping.repository.ProductRepository;
 import com.example.Shopping.request.AddProductRequest;
 import com.example.Shopping.request.ProductUpdateRequest;
@@ -20,7 +21,7 @@ public class ProductService implements IProductService {
     ProductRepository productRepository;
 
     @Autowired
-    CategoryReopsitory categoryRepository;
+    CategoryRepository categoryRepository;
 
     @Override
     public Product addProduct(AddProductRequest request) {
