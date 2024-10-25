@@ -1,8 +1,10 @@
 package com.example.Shopping.service.product;
 
+import com.example.Shopping.dto.ImageDto;
 import com.example.Shopping.dto.ProductDto;
 import com.example.Shopping.exceptions.ProductNotFoundException;
 import com.example.Shopping.model.Category;
+import com.example.Shopping.model.Image;
 import com.example.Shopping.model.Product;
 
 import com.example.Shopping.repository.CategoryRepository;
@@ -14,11 +16,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService implements IProductService {
     @Autowired
     ProductRepository productRepository;
+
+
 
     @Autowired
     CategoryRepository categoryRepository;
@@ -118,12 +123,12 @@ productRepository.deleteById(id);
 
     @Override
     public List<ProductDto> getConvertedProducts(List<Product> products) {
-        return null;
-        //return products.stream().map();
+        //return null;
+        return products.stream().map(Product::getDto).collect(Collectors.toList());
     }
 
     @Override
     public ProductDto convertToDto(Product product) {
-        return null;
+       return product.getDto();
     }
 }

@@ -43,7 +43,7 @@ public class CategoryService {
     }
 
     public Category addCategory(Category category) throws AlreadyExistException {
-        return Optional.of(category).filter(c->!categoryRepository.existByName(c.getName()))
+        return Optional.of(category).filter(c->!categoryRepository.existsByName(c.getName()))
                 .map(categoryRepository::save)
                 .orElseThrow(()->new AlreadyExistException("Category exist with given name"));
     }
